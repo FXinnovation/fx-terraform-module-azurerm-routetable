@@ -1,5 +1,9 @@
 # terraform-module-azurerm-routetable
 
+## Usage
+
+This module is used to deploy multiple route tables (RT) and link them to the subnets containing their key in their configuration (`subnets_config`).
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
@@ -19,3 +23,11 @@
 | route\_table\_ids |  |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Examples
+
+Usage example is found in the `./examples/default/` folder.
+
+## Inspec
+
+No Inspec tests are done for this module.
