@@ -31,7 +31,7 @@ module "az-nsg-demo" {
 }
 
 module "az-rt-demo" {
-  source              = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azurerm-routetable.git?ref=v0.1"
+  source              = "../../"
   resource_group_name = module.az-rg-demo.name
   subnets_config      = var.subnets_config
   route_tables_config = var.route_tables_config
