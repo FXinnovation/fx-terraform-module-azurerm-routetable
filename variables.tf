@@ -5,7 +5,6 @@ variable "resource_group_name" {
 
 variable "location" {
   description = "Location of where the NSGs will live in. Needs to be same as virtual network."
-  type        = string
   default     = ""
 }
 
@@ -27,5 +26,4 @@ variable "subnets_ids_map" {
 variable "tags" {
   description = "Tags to add to the virtual network."
   default     = {}
-  type        = map
 }

@@ -1,6 +1,14 @@
+#####
+# Datasources
+#####
+
 data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
+
+#####
+# Locals
+#####
 
 locals {
   location = var.location == "" ? data.azurerm_resource_group.rg.location : var.location
@@ -12,6 +20,10 @@ locals {
   } if lookup(x, "rt_key", "null") != "null"]
   subnets_with_route_table = zipmap(local.subnet_names_with_route_table, local.subnet_rt_keys_with_route_table)
 }
+
+#####
+# Resources
+#####
 
 resource "azurerm_route_table" "this" {
   for_each                      = var.route_tables_config
