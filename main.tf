@@ -51,7 +51,11 @@ resource "azurerm_route_table" "this" {
 }
 
 resource "azurerm_subnet_route_table_association" "this_association" {
-  for_each       = local.subnets_with_route_table
+  for_each = local.subnets_with_route_table
+
+  lifecycle {
+    ignore_changes = [route_table_id, subnet_id]
+  }
   route_table_id = lookup(azurerm_route_table.this, each.value["rt_key"], null)["id"]
   subnet_id      = lookup(var.subnets_ids_map, each.value["subnet_name"], null)
 }
