@@ -17,7 +17,7 @@ module "az_vnet_demo" {
 module "az_subnets_demo" {
   source               = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azurerm-virtualnetwork-subnet.git?ref=v0.2"
   resource_group_name  = module.az_rg_demo.name
-  virtual_network_name = module.az_vnet-demo.virtual_network_name
+  virtual_network_name = module.az_vnet_demo.virtual_network_name
   subnets_config       = var.subnets_config
 }
 
