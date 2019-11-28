@@ -26,7 +26,7 @@ locals {
 #####
 
 resource "azurerm_route_table" "this" {
-  for_each                      = var.route_tables_config
+  for_each                      = var.enabled ? var.route_tables_config : {}
   resource_group_name           = data.azurerm_resource_group.rg.name
   location                      = local.location
   name                          = each.value["name"]
@@ -51,7 +51,7 @@ resource "azurerm_route_table" "this" {
 }
 
 resource "azurerm_subnet_route_table_association" "this_association" {
-  for_each = local.subnets_with_route_table
+  for_each = var.enabled ? local.subnets_with_route_table : {}
 
   lifecycle {
     ignore_changes = [route_table_id, subnet_id]
