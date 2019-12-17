@@ -13,7 +13,7 @@ data "azurerm_resource_group" "rg" {
 locals {
   location = var.location == "" ? data.azurerm_resource_group.rg.location : var.location
 
-  subnet_names_with_route_table = [for x in var.subnets_config : "{x.name}" if lookup(x, "rt_key", "null") != "null"]
+  subnet_names_with_route_table = [for x in var.subnets_config : "${x.name}" if lookup(x, "rt_key", "null") != "null"]
   subnet_rt_keys_with_route_table = [for x in var.subnets_config : {
     subnet_name = x.name
     rt_key      = x.rt_key
