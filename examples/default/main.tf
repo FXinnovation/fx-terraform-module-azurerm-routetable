@@ -6,7 +6,7 @@ module "az_rg_demo" {
 }
 
 module "az_vnet_demo" {
-  source              = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azurerm-virtualnetwork.git?ref=v0.2"
+  source              = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azurerm-virtualnetwork.git?ref=0.2.1"
   resource_group_name = module.az_rg_demo.name
   vnet_name           = var.vnet_name
   vnet_address_space  = var.vnet_address_space
@@ -15,14 +15,14 @@ module "az_vnet_demo" {
 }
 
 module "az_subnets_demo" {
-  source               = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azurerm-virtualnetwork-subnet.git?ref=v0.2"
+  source               = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azurerm-virtualnetwork-subnet.git?ref=0.2.1"
   resource_group_name  = module.az_rg_demo.name
   virtual_network_name = module.az_vnet_demo.virtual_network_name
   subnets_config       = var.subnets_config
 }
 
 module "az_nsg_demo" {
-  source                         = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azurerm-networksecuritygroup.git?ref=v0.2"
+  source                         = "git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-azurerm-networksecuritygroup.git?ref=0.2.1"
   resource_group_name            = module.az_rg_demo.name
   subnets_config                 = var.subnets_config
   network_security_groups_config = var.network_security_groups_config
