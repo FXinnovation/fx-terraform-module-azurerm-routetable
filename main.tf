@@ -1,18 +1,9 @@
-#####
-# Datasources
-#####
-
-data "azurerm_resource_group" "rg" {
-  name = var.resource_group_name
-}
 
 #####
 # Locals
 #####
 
 locals {
-  location = var.location == "" ? data.azurerm_resource_group.rg.location : var.location
-
   subnet_names_with_route_table = [for x in var.subnets_config : "${x.name}" if lookup(x, "rt_key", "null") != "null"]
   subnet_rt_keys_with_route_table = [for x in var.subnets_config : {
     subnet_name = x.name
@@ -27,8 +18,8 @@ locals {
 
 resource "azurerm_route_table" "this" {
   for_each                      = var.enabled ? var.route_tables_config : {}
-  resource_group_name           = data.azurerm_resource_group.rg.name
-  location                      = local.location
+  resource_group_name           = var.resource_group_name
+  location                      = var.location
   name                          = each.value["name"]
   disable_bgp_route_propagation = lookup(each.value, "disable_bgp_route_propagation", null)
 

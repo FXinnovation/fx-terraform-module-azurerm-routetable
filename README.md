@@ -10,7 +10,7 @@ This module is used to deploy multiple route tables (RT) and link them to the su
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | enabled | Enable or disable the module | string | `"true"` | no |
-| location | Location of where the NSGs will live in. Needs to be same as virtual network. | string | `""` | no |
+| location | Location of where the NSGs will live in. Needs to be same as virtual network. | string | n/a | yes |
 | resource\_group\_name | Name of the resource group where the vnet is hosted. | string | n/a | yes |
 | route\_tables\_config | Object containing route tables deployment information for subnets. | any | n/a | yes |
 | subnets\_config | Object containing deployment information for subnets. | any | n/a | yes |
