@@ -9,7 +9,7 @@ This module is used to deploy multiple route tables (RT) and link them to the su
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 1.36.0 |
+| azurerm | >= 1.36.0, < 2.0.0 |
 
 ## Inputs
 
